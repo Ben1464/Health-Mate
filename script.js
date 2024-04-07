@@ -32,17 +32,17 @@ function provideFeedback(name, bmi) {
 
     if (bmi < 18.5) {
         bmiAdvice += "Based on your BMI, you're underweight.";
-        riskAdvice = "These are some of the most common predisposed Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
+        riskAdvice = "These are some of the most common predisposed risks of being under weight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
         hospitalAdvice = "For further medical assistance, consider visiting these hospitals in Kenya:\n- Nairobi Hospital, Nairobi\n- Aga Khan University Hospital, Nairobi\n- Kenyatta National Hospital, Nairobi\n- Mombasa Hospital, Mombasa\n- Eldoret Hospital, Eldoret\n\nRemember to schedule an appointment and verify the availability of relevant specialists.";
     } else if (bmi >= 18.5 && bmi < 24.9) {
-        bmiAdvice += "based on your BMI, you're within the normal weight range.";
+        bmiAdvice += "Based on your BMI, you're within the normal weight range.";
         riskAdvice = "Within the healthy weight range you are associated with the lowest health risks. Maintain a balanced diet and live an active life.";
     } else if (bmi >= 25 && bmi < 29.9) {
         bmiAdvice += "based on your BMI, you're overweight.";
-        riskAdvice = "Predisposed risks: Heart diseases, High blood pressure, Type 2 diabetes. Consider regular check-ups and be mindful of what you eat.";
+        riskAdvice = "Predisposed risks include: Heart diseases, High blood pressure, Type 2 diabetes. Consider regular check-ups and be mindful of what you eat.";
         hospitalAdvice = "For further medical assistance, consider visiting these hospitals in Kenya:\n- Nairobi Hospital, Nairobi\n- Aga Khan University Hospital, Nairobi\n- Kenyatta National Hospital, Nairobi\n- Mombasa Hospital, Mombasa\n- Eldoret Hospital, Eldoret\n\nRemember to schedule an appointment and verify the availability of relevant specialists.";
     } else {
-        bmiAdvice += "based on your BMI, you're obese!";
+        bmiAdvice += "Based on your BMI, you're obese!";
         riskAdvice = "Predisposed risks: Heart diseases, Certain cancers, Liver disease. It's essential to focus on a healthier lifestyle.";
         hospitalAdvice = "For further medical assistance, consider visiting these hospitals in Kenya:\n- Nairobi Hospital, Nairobi\n- Aga Khan University Hospital, Nairobi\n- Kenyatta National Hospital, Nairobi\n- Mombasa Hospital, Mombasa\n- Eldoret Hospital, Eldoret\n\nRemember to schedule an appointment and verify the availability of relevant specialists.";
     }
@@ -67,16 +67,16 @@ function populateMealPlan(bmi) {
             lunch = "Rice with beans/peas, greens, and avocado";
             supper = "Ugali with beef and greens";
         } else if (bmi >= 18.5 && bmi < 24.9) {
-            breakfast = "Tea/coffee with boiled sweet potatoes or yams";
+            breakfast = "Sugarles tea/coffee with boiled sweet potatoes or yams";
             lunch = "Githeri with greens and avocado";
             supper = "Potatoes with beef and vegetable salad";
         } else if (bmi >= 25 && bmi < 29.9) {
-            breakfast = "Green tea";
+            breakfast = "Sugarlesss and milkless tea/coffee";
             lunch = "Protein of your choice with greens and avocado";
-            supper = "Githeri with greens";
+            supper = "Controlled portions of complex carbohydrates like Githeri, Yams and Ndumas with greens of your choice";
         } else {
-            breakfast = "Green tea";
-            lunch = "Protein of your choice with greens";
+            breakfast = "Sugarless and milkless tea/coffee";
+            lunch = " Controlled portions of whole protein of your choice with greens";
             supper = "Complex carbohydrates like arrowroot and yams with beef stew";
         }
 
