@@ -25,37 +25,76 @@ function provideFeedback(name, bmi) {
     const bmiAdviceElem = document.getElementById('bmi-advice');
     const riskAdviceElem = document.getElementById('risk-advice');
     const hospitalAdviceElem = document.getElementById('hospital-advice');
+    const mealPlanElem = document.getElementById('meal-plan-content');
 
     let bmiAdvice = `Dear ${name}, `;
     let riskAdvice = "";
     let hospitalAdvice = "";
+    let mealPlanContent = "";
 
+    // BMI calculation and feedback
     if (bmi < 18.5) {
         bmiAdvice += "Based on your BMI, you're underweight.";
-        riskAdvice = "These are some of the most common predisposed risks of being under weight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
-        hospitalAdvice = "For further medical assistance, consider visiting these hospitals in Kenya:\n- Nairobi Hospital, Nairobi\n- Aga Khan University Hospital, Nairobi\n- Kenyatta National Hospital, Nairobi\n- Mombasa Hospital, Mombasa\n- Eldoret Hospital, Eldoret\n\nRemember to schedule an appointment and verify the availability of relevant specialists.";
+        riskAdvice = "These are some of the most common predisposed risks of being underweight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
+        hospitalAdvice = [
+            { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
+            { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
+            { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
+            { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
+            { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+        ];
+        mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 18.5 && bmi < 24.9) {
         bmiAdvice += "Based on your BMI, you're within the normal weight range.";
-        riskAdvice = "Within the healthy weight range you are associated with the lowest health risks. Maintain a balanced diet and live an active life.";
+        riskAdvice = "Within this range you are associated with the lowest health risks. Maintain a balanced diet and live an active life to maintain the status quo.";
+        mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 25 && bmi < 29.9) {
         bmiAdvice += "based on your BMI, you're overweight.";
         riskAdvice = "Predisposed risks include: Heart diseases, High blood pressure, Type 2 diabetes. Consider regular check-ups and be mindful of what you eat.";
-        hospitalAdvice = "For further medical assistance, consider visiting these hospitals in Kenya:\n- Nairobi Hospital, Nairobi\n- Aga Khan University Hospital, Nairobi\n- Kenyatta National Hospital, Nairobi\n- Mombasa Hospital, Mombasa\n- Eldoret Hospital, Eldoret\n\nRemember to schedule an appointment and verify the availability of relevant specialists.";
+        hospitalAdvice = [
+            { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
+            { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
+            { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
+            { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
+            { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+        ];
+        mealPlanContent = populateMealPlan(bmi);
     } else {
         bmiAdvice += "Based on your BMI, you're obese!";
         riskAdvice = "Predisposed risks: Heart diseases, Certain cancers, Liver disease. It's essential to focus on a healthier lifestyle.";
-        hospitalAdvice = "For further medical assistance, consider visiting these hospitals in Kenya:\n- Nairobi Hospital, Nairobi\n- Aga Khan University Hospital, Nairobi\n- Kenyatta National Hospital, Nairobi\n- Mombasa Hospital, Mombasa\n- Eldoret Hospital, Eldoret\n\nRemember to schedule an appointment and verify the availability of relevant specialists.";
+        hospitalAdvice = [
+            { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
+            { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
+            { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
+            { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
+            { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+        ];
+        mealPlanContent = populateMealPlan(bmi);
     }
 
+    // Displaying BMI and risk advice
     bmiAdviceElem.innerText = bmiAdvice;
     riskAdviceElem.innerText = riskAdvice;
-    hospitalAdviceElem.innerText = hospitalAdvice;
 
-    populateMealPlan(bmi);
+    // Displaying hospital advice
+    if (hospitalAdvice.length > 0) {
+        hospitalAdviceElem.innerHTML = ""; // Clear existing content
+        hospitalAdvice.forEach(hospital => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${hospital.name}</td>
+                <td>${hospital.location}</td>
+                <td><a href="${hospital.website}" target="_blank">${hospital.website}</a></td>
+            `;
+            hospitalAdviceElem.appendChild(row);
+        });
+    }
+
+    // Displaying meal plan
+    mealPlanElem.innerHTML = mealPlanContent;
 }
 
 function populateMealPlan(bmi) {
-    const mealPlanElem = document.getElementById('meal-plan-content');
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     let mealPlanContent = "";
 
@@ -67,7 +106,7 @@ function populateMealPlan(bmi) {
             lunch = "Rice with beans/peas, greens, and avocado";
             supper = "Ugali with beef and greens";
         } else if (bmi >= 18.5 && bmi < 24.9) {
-            breakfast = "Sugarles tea/coffee with boiled sweet potatoes or yams";
+            breakfast = "Sugarless tea/coffee with boiled sweet potatoes or yams";
             lunch = "Githeri with greens and avocado";
             supper = "Potatoes with beef and vegetable salad";
         } else if (bmi >= 25 && bmi < 29.9) {
@@ -76,7 +115,7 @@ function populateMealPlan(bmi) {
             supper = "Controlled portions of complex carbohydrates like Githeri, Yams and Ndumas with greens of your choice";
         } else {
             breakfast = "Sugarless and milkless tea/coffee";
-            lunch = " Controlled portions of whole protein of your choice with greens";
+            lunch = "Controlled portions of whole protein of your choice with greens";
             supper = "Complex carbohydrates like arrowroot and yams with beef stew";
         }
 
@@ -97,8 +136,7 @@ function populateMealPlan(bmi) {
                 <td>${supper}</td>
             </tr>
         `;
-
     });
 
-    mealPlanElem.innerHTML = mealPlanContent;
+    return mealPlanContent;
 }
