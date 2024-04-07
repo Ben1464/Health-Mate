@@ -11,10 +11,12 @@
 </head>
 
 <body>
+    <header class="header">
+        <h1>Health <span>Mate</span></h1>
+    </header>
     <main class="calculator">
-        <h2>Health <span>Mate</span></h2>
-        <p>
-            <article><b>Fill in with your details to receive  health advice based on your BMI and a suggested meal plan for improvement.</b></article>
+        <p class="intro">
+            Fill in with your details to receive health advice based on your BMI and a suggested meal plan for improvement.
         </p>
 
         <form id="estimatorForm">
@@ -47,37 +49,26 @@
         <section id="output">
             <div id="bmi-advice" class="bmi-advice"></div>
             <div id="risk-advice" class="risk-advice"></div>
-            <div id="meal-advice" class="meal-advice"></div>
-            <h3>Proposed weekly meal plan.</h3>
-            <table class="meal-plan">
-                <thead>
-                    <tr>
-                        <th>Meal</th>
-                        <th>Food Item</th>
-                    </tr>
-                </thead>
-                <tbody id="meal-plan-content"></tbody>
-            </table>
-            <h3>Proposed hospitals for further medical advice.</h3>
-            
-<table class="hospital-table">
-    <thead>
-        <tr>
-            <th>Hospital Name</th>
-            <th>Location</th>
-            <th>Website</th>
-        </tr>
-    </thead>
-    <tbody id="hospital-advice"></tbody>
-</table>
-
+            <div id="meal-advice" class="meal-advice">
+                <h2>Proposed Weekly Meal Plan</h2>
+                <table class="meal-plan">
+                    <!-- Meal plan content will be populated here -->
+                </table>
+            </div>
+            <div id="hospital-advice" class="hospital-advice">
+                <h2>Proposed Hospitals for Further Medical Advice</h2>
+                <table class="hospital-table">
+                    <!-- Hospital advice content will be populated here -->
+                </table>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2023 Health Mate:All Rights Reserved</p>
+    <footer class="footer">
+        <p>&copy; 2023 Health Mate: All Rights Reserved</p>
         <p>RavenDev</p>
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>

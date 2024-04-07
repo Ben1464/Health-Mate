@@ -25,7 +25,7 @@ function provideFeedback(name, bmi) {
     const bmiAdviceElem = document.getElementById('bmi-advice');
     const riskAdviceElem = document.getElementById('risk-advice');
     const hospitalAdviceElem = document.getElementById('hospital-advice');
-    const mealPlanElem = document.getElementById('meal-plan-content');
+    const mealPlanElem = document.getElementById('meal-plan');
 
     let bmiAdvice = `Dear ${name}, `;
     let riskAdvice = "";
