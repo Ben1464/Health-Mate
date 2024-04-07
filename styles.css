@@ -76,7 +76,7 @@ button:hover {
 .meal-plan,
 .hospital-table {
     width: 100%;
-    border-collapse: collapse;
+    border: 1px solid black;
     margin-top: 20px;
 }
 
@@ -87,6 +87,7 @@ button:hover {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    border: 0.01px solid black;
 }
 
 .meal-plan th,
