@@ -63,11 +63,11 @@ function provideFeedback(name, bmi) {
         bmiAdvice += "Based on your BMI, you're obese!";
         riskAdvice = "Predisposed risks: Heart diseases, Certain cancers, Liver disease. It's essential to focus on a healthier lifestyle.";
         hospitalAdvice = [
-            { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
-            { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
-            { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
-            { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
-            { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+            { name: "Nairobi Hospital",  website: "https://www.nairobihospital.org/" },
+            { name: "Aga Khan University Hospital",  website: "https://www.agakhanhospitals.org/kenya/" },
+            { name: "Kenyatta National Hospital",  website: "https://knh.or.ke/" },
+            { name: "Mombasa Hospital", website: "https://www.themombasahospital.com/" },
+            { name: "Eldoret Hospital", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
         ];
         mealPlanContent = populateMealPlan(bmi);
     }
@@ -83,7 +83,6 @@ function provideFeedback(name, bmi) {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${hospital.name}</td>
-                <td>${hospital.location}</td>
                 <td><a href="${hospital.website}" target="_blank">${hospital.website}</a></td>
             `;
             hospitalAdviceElem.appendChild(row);
@@ -140,3 +139,5 @@ function populateMealPlan(bmi) {
 
     return mealPlanContent;
 }
+let currentYear= new Date().getFullYear();
+document.getElementById("currentYear").innerHTML=currentYear;
