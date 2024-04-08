@@ -24,7 +24,7 @@ document.getElementById('estimatorForm').addEventListener('submit', function(e) 
 function provideFeedback(name, bmi) {
     const bmiAdviceElem = document.getElementById('bmi-advice');
     const riskAdviceElem = document.getElementById('risk-advice');
-    const hospitalAdviceElem = document.getElementById('hospital-advice');
+    //const hospitalAdviceElem = document.getElementById('hospital-advice');
     const mealPlanElem = document.querySelector('.meal-plan');
 
     let bmiAdvice = `Dear ${name}, `;
@@ -36,39 +36,39 @@ function provideFeedback(name, bmi) {
     if (bmi < 18.5) {
         bmiAdvice += "Based on your BMI, you're underweight.";
         riskAdvice = "These are some of the most common predisposed risks of being underweight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
-        hospitalAdvice = [
-            { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
-            { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
-            { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
-            { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
-            { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
-        ];
+        // hospitalAdvice = [
+        //     { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
+        //     { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
+        //     { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
+        //     { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
+        //     { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+        // ];
         mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 18.5 && bmi < 24.9) {
-        bmiAdvice += "Based on your BMI, you're within the normal weight range.";
+        bmiAdvice += "Congratulations! Based on your BMI, you're within the normal weight range.";
         riskAdvice = "Within this range you are associated with the lowest health risks. Maintain a balanced diet and live an active life to maintain the status quo.";
         mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 25 && bmi < 29.9) {
-        bmiAdvice += "based on your BMI, you're overweight.";
-        riskAdvice = "Predisposed risks include: Heart diseases, High blood pressure, Type 2 diabetes. Consider regular check-ups and be mindful of what you eat.";
-        hospitalAdvice = [
-            { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
-            { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
-            { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
-            { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
-            { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
-        ];
+        bmiAdvice += "Beside your BMI indicating that you're overweight,There is an opportunity for improvement. Small changes can make a big difference in your well-being.";
+        riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease.";
+        // hospitalAdvice = [
+        //     { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
+        //     { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
+        //     { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
+        //     { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
+        //     { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+        // ];
         mealPlanContent = populateMealPlan(bmi);
     } else {
-        bmiAdvice += "Based on your BMI, you're obese!";
-        riskAdvice = "Predisposed risks: Heart diseases, Certain cancers, Liver disease. It's essential to focus on a healthier lifestyle.";
-        hospitalAdvice = [
-            { name: "Nairobi Hospital",  website: "https://www.nairobihospital.org/" },
-            { name: "Aga Khan University Hospital",  website: "https://www.agakhanhospitals.org/kenya/" },
-            { name: "Kenyatta National Hospital",  website: "https://knh.or.ke/" },
-            { name: "Mombasa Hospital", website: "https://www.themombasahospital.com/" },
-            { name: "Eldoret Hospital", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
-        ];
+        bmiAdvice += "Beside your BMI being high it suggests opportunities for improvement. Small changes can make a big difference in your well-being. If you need support, I'm here for you. ";
+        riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease..";
+        // hospitalAdvice = [
+        //     { name: "Nairobi Hospital",  website: "https://www.nairobihospital.org/" },
+        //     { name: "Aga Khan University Hospital",  website: "https://www.agakhanhospitals.org/kenya/" },
+        //     { name: "Kenyatta National Hospital",  website: "https://knh.or.ke/" },
+        //     { name: "Mombasa Hospital", website: "https://www.themombasahospital.com/" },
+        //     { name: "Eldoret Hospital", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
+        // ];
         mealPlanContent = populateMealPlan(bmi);
     }
 
