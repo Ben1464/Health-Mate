@@ -34,7 +34,7 @@ function provideFeedback(name, bmi) {
 
     // BMI calculation and feedback
     if (bmi < 18.5) {
-        bmiAdvice += "Based on your BMI, you're underweight.";
+        bmiAdvice += "Based on your BMI, it appears you're below the healthy weight range anfd there is an opportunity for improvement";
         riskAdvice = "These are some of the most common predisposed risks of being underweight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
         // hospitalAdvice = [
         //     { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
