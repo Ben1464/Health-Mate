@@ -1,0 +1,21 @@
+{
+    "name": "Health Mate",
+    "short_name": "Health Mate",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4CAF50",
+    "description": "The app offers health advice based on your BMI and a suggested meal plan for improvement.",
+    "icons": [
+      {
+        "src": "./images/health landing 2.jpg",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "./images/Health landing.jpeg",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
