@@ -4,14 +4,18 @@ document.getElementById('estimatorForm').addEventListener('submit', function(e) 
     const name = document.getElementById('name').value;
     const age = parseFloat(document.getElementById('age').value);
     const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value) / 100;
+    const height = parseFloat(document.getElementById('height').value);
 
     if (!name || isNaN(age) || isNaN(weight) || isNaN(height)) {
         alert("Please fill out all fields correctly.");
         return;
     }
 
-    const bmi = weight / (height * height);
+    const feet = Math.floor(height);
+    const inches = (height - feet) * 10; // Convert decimal part to inches
+    const heightInInches = (feet * 12) + inches; // Convert total height to inches
+    const heightMeters = heightInInches * 0.0254; // Convert height to meters
+    const bmi = weight / (heightMeters * heightMeters); // Calculate BMI
     provideFeedback(name, bmi);
 
     // After providing feedback, make the output fade in
@@ -24,70 +28,34 @@ document.getElementById('estimatorForm').addEventListener('submit', function(e) 
 function provideFeedback(name, bmi) {
     const bmiAdviceElem = document.getElementById('bmi-advice');
     const riskAdviceElem = document.getElementById('risk-advice');
-    //const hospitalAdviceElem = document.getElementById('hospital-advice');
     const mealPlanElem = document.querySelector('.meal-plan');
 
     let bmiAdvice = `Dear ${name}, `;
     let riskAdvice = "";
-    let hospitalAdvice = "";
     let mealPlanContent = "";
 
     // BMI calculation and feedback
     if (bmi < 18.5) {
-        bmiAdvice += "Based on your BMI, it appears you're below the healthy weight range anfd there is an opportunity for improvement";
+        bmiAdvice += "Based on your BMI, it appears you're below the healthy weight range and there is an opportunity for improvement.";
         riskAdvice = "These are some of the most common predisposed risks of being underweight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
-        // hospitalAdvice = [
-        //     { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
-        //     { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
-        //     { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
-        //     { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
-        //     { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
-        // ];
         mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 18.5 && bmi < 24.9) {
         bmiAdvice += "Congratulations! Based on your BMI, you're within the normal weight range.";
-        riskAdvice = "Within this range you are associated with the lowest health risks. Maintain a balanced diet and live an active life to maintain the status quo.";
+        riskAdvice = "Within this range, you are associated with the lowest health risks. Maintain a balanced diet and live an active life to maintain the status quo.";
         mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 25 && bmi < 29.9) {
-        bmiAdvice += "Beside your BMI indicating that you're overweight,There is an opportunity for improvement. Small changes can make a big difference in your well-being.";
+        bmiAdvice += "Beside your BMI indicating that you're overweight, there is an opportunity for improvement. Small changes can make a big difference in your well-being.";
         riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease.";
-        // hospitalAdvice = [
-        //     { name: "Nairobi Hospital", location: "Nairobi", website: "https://www.nairobihospital.org/" },
-        //     { name: "Aga Khan University Hospital", location: "Nairobi", website: "https://www.agakhanhospitals.org/kenya/" },
-        //     { name: "Kenyatta National Hospital", location: "Nairobi", website: "https://knh.or.ke/" },
-        //     { name: "Mombasa Hospital", location: "Mombasa", website: "https://www.themombasahospital.com/" },
-        //     { name: "Eldoret Hospital", location: "Eldoret", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
-        // ];
         mealPlanContent = populateMealPlan(bmi);
     } else {
-        bmiAdvice += "Beside your BMI being high it suggests opportunities for improvement. Small changes can make a big difference in your well-being. If you need support, I'm here for you. ";
-        riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease..";
-        // hospitalAdvice = [
-        //     { name: "Nairobi Hospital",  website: "https://www.nairobihospital.org/" },
-        //     { name: "Aga Khan University Hospital",  website: "https://www.agakhanhospitals.org/kenya/" },
-        //     { name: "Kenyatta National Hospital",  website: "https://knh.or.ke/" },
-        //     { name: "Mombasa Hospital", website: "https://www.themombasahospital.com/" },
-        //     { name: "Eldoret Hospital", website: "https://www.realeldoret.co.ke/places-to-visit-in-eldoret/hospitals-in-eldoret/" }
-        // ];
+        bmiAdvice += "Beside your BMI being high it suggests opportunities for improvement. Small changes can make a big difference in your well-being. If you need support, I'm here for you.";
+        riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease.";
         mealPlanContent = populateMealPlan(bmi);
     }
 
     // Displaying BMI and risk advice
     bmiAdviceElem.innerText = bmiAdvice;
     riskAdviceElem.innerText = riskAdvice;
-
-    // Displaying hospital advice
-    if (hospitalAdvice.length > 0) {
-        hospitalAdviceElem.innerHTML = ""; // Clear existing content
-        hospitalAdvice.forEach(hospital => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${hospital.name}</td>
-                <td><a href="${hospital.website}" target="_blank">${hospital.website}</a></td>
-            `;
-            hospitalAdviceElem.appendChild(row);
-        });
-    }
 
     // Displaying meal plan
     mealPlanElem.innerHTML = mealPlanContent;
@@ -109,9 +77,9 @@ function populateMealPlan(bmi) {
             lunch = "Githeri with greens and avocado";
             supper = "Potatoes with beef and vegetable salad";
         } else if (bmi >= 25 && bmi < 29.9) {
-            breakfast = "Sugarlesss and milkless tea/coffee";
+            breakfast = "Sugarless and milkless tea/coffee";
             lunch = "Protein of your choice with greens and avocado";
-            supper = "Controlled portions of complex carbohydrates like Githeri, Yams and Ndumas with greens of your choice";
+            supper = "Controlled portions of complex carbohydrates like Githeri, Yams, and Ndumas with greens of your choice";
         } else {
             breakfast = "Sugarless and milkless tea/coffee";
             lunch = "Controlled portions of whole protein of your choice with greens";
@@ -139,5 +107,6 @@ function populateMealPlan(bmi) {
 
     return mealPlanContent;
 }
-let currentYear= new Date().getFullYear();
-document.getElementById("currentYear").innerHTML=currentYear;
+
+let currentYear = new Date().getFullYear();
+document.getElementById("currentYear").innerHTML = currentYear;
