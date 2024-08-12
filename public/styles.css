@@ -8,15 +8,17 @@
 /* Body Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0; /* Slightly darker background */
 }
 
 /* Header Styles */
 .header {
-    background-color: #3498db;
+    background-color: #e0e0e0;
     text-align: center;
     padding: 20px 0;
-    color: white;
+    color: #3498db;
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+    border-radius: 15px;
 }
 
 .header h1 {
@@ -30,9 +32,9 @@ body {
 
 /* Main Styles */
 .calculator {
-    background-color: white;
+    background-color: #e0e0e0;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
     padding: 20px;
     margin: 20px;
 }
@@ -40,6 +42,8 @@ body {
 .intro {
     text-align: center;
     margin-bottom: 20px;
+    color: #3498db;
+    text-shadow: 1px 1px 2px #bebebe;
 }
 
 input[type='text'],
@@ -48,36 +52,45 @@ select {
     width: 100%;
     padding: 10px;
     margin: 5px 0 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+    font-size: 1em;
+    color: #555;
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #3498db;
-    color: white;
+    background-color: #e0e0e0;
+    color: #3498db;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    transition: box-shadow 0.3s ease;
+    font-size: 1em;
 }
 
 button:hover {
-    background-color: #2980b9;
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
 }
 
 /* Output Section Styles */
 #output {
     margin-top: 30px;
+    color: #3498db;
+    text-shadow: 1px 1px 2px #bebebe;
 }
 
 .meal-plan,
 .hospital-table {
     width: 100%;
-    border: 1px solid black;
     margin-top: 20px;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
 }
 
 .meal-plan th,
@@ -87,21 +100,24 @@ button:hover {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    border: 0.01px solid black;
+    color: #555;
 }
 
 .meal-plan th,
 .hospital-table th {
-    background-color: #3498db;
-    color: white;
+    background-color: #e0e0e0;
+    color: #3498db;
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
 }
 
 /* Footer Styles */
 .footer {
     text-align: center;
     padding: 20px;
-    background-color: #3498db;
-    color: white;
+    background-color: #e0e0e0;
+    color: #3498db;
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+    border-radius: 15px;
 }
 
 @keyframes blink {
@@ -114,4 +130,3 @@ button:hover {
 /* .blinking-link {
     animation: blink 1s infinite;
 } */
-
