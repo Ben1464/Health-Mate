@@ -42,7 +42,7 @@ function provideFeedback(name, bmi) {
     } else if (bmi >= 18.5 && bmi < 24.9) {
         bmiAdvice += "Congratulations! Your BMI is within the healthy weight range. Continue maintaining a balanced diet and staying active to keep up the good work.";
         riskAdvice = "You're associated with the lowest health risks. Keep up with a healthy lifestyle to sustain your well-being.";
-        mealPlanContent = populateMealPlan(bmi);
+        mealPlanContent = ""; // No meal plan needed for healthy weight
     } else if (bmi >= 25 && bmi < 29.9) {
         bmiAdvice += "Your BMI indicates that you're slightly overweight. Incorporating small, manageable changes into your diet and exercise routine can make a big difference.";
         riskAdvice = "Carrying extra weight may increase the risk of heart disease, certain cancers, and liver disease. Consider consulting a nutritionist or trainer for guidance.";
@@ -57,7 +57,7 @@ function provideFeedback(name, bmi) {
     bmiAdviceElem.innerText = bmiAdvice;
     riskAdviceElem.innerText = riskAdvice;
 
-    // Displaying meal plan
+    // Displaying meal plan (only if applicable)
     mealPlanElem.innerHTML = mealPlanContent;
 }
 
@@ -70,43 +70,40 @@ function populateMealPlan(bmi) {
 
         if (bmi < 18.5) {
             // Underweight: Focus on high-calorie, nutrient-dense foods
-            breakfast = "Boiled sweet potatoes/arrow roots/cassava, tow boiled eggs and tea.";
+            breakfast = "Boiled sweet potatoes, two boiled eggs, and tea.";
             lunch = "Ugali with nyama choma (grilled meat) and sukuma wiki (collard greens).";
             dinner = "Pilau with a side of chapati and a fruit smoothie.";
-        } else if (bmi >= 18.5 && bmi < 24.9) {
-            // Healthy Weight: Balanced and varied meals
-            breakfast = "Boiled sweet potatoes/arrow roots/cassava,boiled egg and tea.";
-            lunch = "Githeri (maize and beans) with avocado and a side of fresh salad.";
-            dinner = "Omena (small fish) with ugali and steamed vegetables.";
         } else if (bmi >= 25 && bmi < 29.9) {
             // Overweight: Controlled portions with balanced nutrients
-            breakfast = "Boiled sweet potatoes/arrow roots/cassava and tea.";
+            breakfast = "Boiled sweet potatoes and tea.";
             lunch = "Sukuma wiki with a small portion of ugali and grilled tilapia.";
             dinner = "Vegetable stew with a small serving of brown rice.";
-        } else {
+        } else if (bmi >= 30) {
             // Obese: Portion control and low-calorie, nutrient-rich foods
             breakfast = "Fresh fruit salad and a cup of black coffee.";
             lunch = "Mixed vegetable soup with a side of grilled chicken breast.";
             dinner = "Steamed vegetables with a small portion of lean meat and a side of salad.";
         }
 
-        mealPlanContent += `
-            <tr>
-                <td colspan="2" style="background-color: #f7f7f7; font-weight: bold;">${day}</td>
-            </tr>
-            <tr>
-                <td>Breakfast</td>
-                <td>${breakfast}</td>
-            </tr>
-            <tr>
-                <td>Lunch</td>
-                <td>${lunch}</td>
-            </tr>
-            <tr>
-                <td>Dinner</td>
-                <td>${dinner}</td>
-            </tr>
-        `;
+        if (bmi !== null && (bmi < 18.5 || bmi >= 25)) {
+            mealPlanContent += `
+                <tr>
+                    <td colspan="2" style="background-color: #f7f7f7; font-weight: bold;">${day}</td>
+                </tr>
+                <tr>
+                    <td>Breakfast</td>
+                    <td>${breakfast}</td>
+                </tr>
+                <tr>
+                    <td>Lunch</td>
+                    <td>${lunch}</td>
+                </tr>
+                <tr>
+                    <td>Dinner</td>
+                    <td>${dinner}</td>
+                </tr>
+            `;
+        }
     });
 
     return mealPlanContent;
