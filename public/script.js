@@ -36,20 +36,20 @@ function provideFeedback(name, bmi) {
 
     // BMI calculation and feedback
     if (bmi < 18.5) {
-        bmiAdvice += "Based on your BMI, it appears you're below the healthy weight range and there is an opportunity for improvement.";
-        riskAdvice = "These are some of the most common predisposed risks of being underweight: Weakened immune system, Osteoporosis, Anemia. Consult a health professional for further diagnostics.";
+        bmiAdvice += "Your BMI suggests that you are underweight. It's important to focus on nutrient-dense foods to help you reach a healthier weight.";
+        riskAdvice = "Being underweight can lead to a weakened immune system, osteoporosis, and anemia. Consider consulting a healthcare professional for personalized advice.";
         mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 18.5 && bmi < 24.9) {
-        bmiAdvice += "Congratulations! Based on your BMI, you're within the normal weight range.";
-        riskAdvice = "Within this range, you are associated with the lowest health risks. Maintain a balanced diet and live an active life to maintain the status quo.";
+        bmiAdvice += "Congratulations! Your BMI is within the healthy weight range. Continue maintaining a balanced diet and staying active to keep up the good work.";
+        riskAdvice = "You're associated with the lowest health risks. Keep up with a healthy lifestyle to sustain your well-being.";
         mealPlanContent = populateMealPlan(bmi);
     } else if (bmi >= 25 && bmi < 29.9) {
-        bmiAdvice += "Beside your BMI indicating that you're overweight, there is an opportunity for improvement. Small changes can make a big difference in your well-being.";
-        riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease.";
+        bmiAdvice += "Your BMI indicates that you're slightly overweight. Incorporating small, manageable changes into your diet and exercise routine can make a big difference.";
+        riskAdvice = "Carrying extra weight may increase the risk of heart disease, certain cancers, and liver disease. Consider consulting a nutritionist or trainer for guidance.";
         mealPlanContent = populateMealPlan(bmi);
     } else {
-        bmiAdvice += "Beside your BMI being high it suggests opportunities for improvement. Small changes can make a big difference in your well-being. If you need support, I'm here for you.";
-        riskAdvice = "This can lower risks of heart diseases, certain cancers, and liver disease.";
+        bmiAdvice += "Your BMI is in the obese range, which can increase the risk of serious health conditions. Focus on gradual, sustainable changes in your diet and physical activity.";
+        riskAdvice = "Reducing your BMI can significantly lower risks for heart disease, diabetes, and other health issues. Support from a healthcare professional could be beneficial.";
         mealPlanContent = populateMealPlan(bmi);
     }
 
@@ -66,24 +66,28 @@ function populateMealPlan(bmi) {
     let mealPlanContent = "";
 
     days.forEach(day => {
-        let breakfast, lunch, supper;
+        let breakfast, lunch, dinner;
 
         if (bmi < 18.5) {
-            breakfast = "2 eggs and a banana smoothie";
-            lunch = "Rice with beans/peas, greens, and avocado";
-            supper = "Ugali with beef and greens";
+            // Underweight: Focus on high-calorie, nutrient-dense foods
+            breakfast = "Boiled sweet potatoes/arrow roots/cassava, tow boiled eggs and tea.";
+            lunch = "Ugali with nyama choma (grilled meat) and sukuma wiki (collard greens).";
+            dinner = "Pilau with a side of chapati and a fruit smoothie.";
         } else if (bmi >= 18.5 && bmi < 24.9) {
-            breakfast = "Sugarless tea/coffee with boiled sweet potatoes or yams";
-            lunch = "Githeri with greens and avocado";
-            supper = "Potatoes with beef and vegetable salad";
+            // Healthy Weight: Balanced and varied meals
+            breakfast = "Boiled sweet potatoes/arrow roots/cassava,boiled egg and tea.";
+            lunch = "Githeri (maize and beans) with avocado and a side of fresh salad.";
+            dinner = "Omena (small fish) with ugali and steamed vegetables.";
         } else if (bmi >= 25 && bmi < 29.9) {
-            breakfast = "Sugarless and milkless tea/coffee";
-            lunch = "Protein of your choice with greens and avocado";
-            supper = "Controlled portions of complex carbohydrates like Githeri, Yams, and Ndumas with greens of your choice";
+            // Overweight: Controlled portions with balanced nutrients
+            breakfast = "Boiled sweet potatoes/arrow roots/cassava and tea.";
+            lunch = "Sukuma wiki with a small portion of ugali and grilled tilapia.";
+            dinner = "Vegetable stew with a small serving of brown rice.";
         } else {
-            breakfast = "Sugarless and milkless tea/coffee";
-            lunch = "Controlled portions of whole protein of your choice with greens";
-            supper = "Complex carbohydrates like arrowroot and yams with beef stew";
+            // Obese: Portion control and low-calorie, nutrient-rich foods
+            breakfast = "Fresh fruit salad and a cup of black coffee.";
+            lunch = "Mixed vegetable soup with a side of grilled chicken breast.";
+            dinner = "Steamed vegetables with a small portion of lean meat and a side of salad.";
         }
 
         mealPlanContent += `
@@ -99,8 +103,8 @@ function populateMealPlan(bmi) {
                 <td>${lunch}</td>
             </tr>
             <tr>
-                <td>Supper</td>
-                <td>${supper}</td>
+                <td>Dinner</td>
+                <td>${dinner}</td>
             </tr>
         `;
     });
