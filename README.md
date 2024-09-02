@@ -69,7 +69,7 @@ The application should display in your browser. If you see any issues, check the
 
 
 
-Health Mate is built with the following tools and libraries: <ul><li>HTML</li> <li>CSS</> <li> JavaScript</li></ul>
+Health Mate is built with the following tools and libraries: <ul><li>HTML</li> <li>CSS<li> JavaScript</li></ul>
 
 
 
