@@ -29,9 +29,9 @@
 
   Health Mate is an interactive web application designed to help users receive personalized health advice based on their Body Mass Index (BMI). Users enter their name, age, gender, weight, and height into a form, and the application calculates their BMI. Based on the BMI result, the tool provides customized feedback, including health advice and a proposed meal plan tailored to their BMI category.
 
+## Demo Video
 
-[Watch the demo video here](videos/Health.webm)
-
+[Watch the demo video](videos/Health.webm)
 
 
 
